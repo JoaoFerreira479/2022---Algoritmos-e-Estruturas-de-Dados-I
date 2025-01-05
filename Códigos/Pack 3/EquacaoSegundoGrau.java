@@ -1,5 +1,3 @@
-package estruturascondicionais;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,18 +7,14 @@ public class EquacaoSegundoGrau {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Entrada dos coeficientes da equação
             double a = lerValorDouble(scanner, "Digite o valor de a (coeficiente do termo x²): ");
             double b = lerValorDouble(scanner, "Digite o valor de b (coeficiente do termo x): ");
             double c = lerValorDouble(scanner, "Digite o valor de c (termo constante): ");
 
-            // Validação do coeficiente a
             validarCoeficienteA(a);
 
-            // Cálculo do discriminante (delta)
             double delta = calcularDelta(a, b, c);
 
-            // Determinação e exibição das raízes
             determinarRaizes(a, b, delta);
 
         } catch (IllegalArgumentException e) {
@@ -32,19 +26,16 @@ public class EquacaoSegundoGrau {
         }
     }
 
-    // Método para validar o coeficiente a
     private static void validarCoeficienteA(double a) {
         if (a == 0) {
             throw new IllegalArgumentException("Equação inválida. O coeficiente 'a' deve ser diferente de zero.");
         }
     }
 
-    // Método para calcular o valor de delta
     private static double calcularDelta(double a, double b, double c) {
         return Math.pow(b, 2) - (4 * a * c);
     }
 
-    // Método para determinar e exibir as raízes com base em delta
     private static void determinarRaizes(double a, double b, double delta) {
         if (delta < 0) {
             System.out.println("A equação não possui raízes reais.");
@@ -58,7 +49,6 @@ public class EquacaoSegundoGrau {
         }
     }
 
-    // Método para ler um valor do tipo double com validação
     private static double lerValorDouble(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -66,12 +56,11 @@ public class EquacaoSegundoGrau {
                 return scanner.nextDouble();
             } catch (InputMismatchException e) {
                 exibirMensagemErro("Erro: Entrada inválida. Por favor, digite um número decimal válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
