@@ -1,5 +1,3 @@
-package usodeflag;
-
 import java.util.Scanner;
 
 public class GrupoDePessoas {
@@ -10,7 +8,6 @@ public class GrupoDePessoas {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Inicialização das variáveis
             int quantidadeHomens = 0;
             int quantidadeMulheres = 0;
             int somaIdadesHomens = 0;
@@ -18,16 +15,14 @@ public class GrupoDePessoas {
             int maiorIdade = Integer.MIN_VALUE;
             int menorIdade = Integer.MAX_VALUE;
 
-            // Mensagem inicial
             exibirMensagem("Digite a idade e o gênero das pessoas:");
             exibirMensagem("Digite " + ENCERRAR + " para a idade para encerrar.");
 
-            // Loop principal
             while (true) {
                 int idade = lerValorInteiro(scanner, "Idade: ");
 
                 if (idade == ENCERRAR) {
-                    break; // Encerra o loop
+                    break;
                 }
 
                 if (!validarIdade(idade)) {
@@ -35,7 +30,6 @@ public class GrupoDePessoas {
                     continue;
                 }
 
-                // Atualiza maior e menor idade
                 maiorIdade = Math.max(maiorIdade, idade);
                 menorIdade = Math.min(menorIdade, idade);
 
@@ -51,7 +45,6 @@ public class GrupoDePessoas {
                 totalPessoas++;
             }
 
-            // Exibição dos resultados
             exibirResultados(quantidadeHomens, quantidadeMulheres, somaIdadesHomens, totalPessoas, maiorIdade, menorIdade);
 
         } catch (Exception e) {
