@@ -1,5 +1,3 @@
-package conceitosbasicosprogramacao;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,16 +7,12 @@ public class ConversaoTempo {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Entrada da quantidade de minutos
             int minutos = lerValorInteiro(scanner, "Digite a quantidade de minutos: ");
 
-            // Validação do valor
             validarMinutos(minutos);
 
-            // Conversão para o formato horas:minutos:segundos
             String resultado = converterMinutosParaHorasMinutosSegundos(minutos);
 
-            // Exibição do resultado
             exibirResultado(resultado);
 
         } catch (IllegalArgumentException e) {
@@ -30,29 +24,24 @@ public class ConversaoTempo {
         }
     }
 
-    // Método para validar os minutos
     private static void validarMinutos(int minutos) {
         if (minutos < 0) {
             throw new IllegalArgumentException("A quantidade de minutos não pode ser negativa.");
         }
     }
 
-    // Método para converter minutos no formato horas:minutos:segundos
     private static String converterMinutosParaHorasMinutosSegundos(int totalMinutos) {
-        int horas = totalMinutos / 60; // Calcula o número de horas
-        int minutos = totalMinutos % 60; // Calcula os minutos restantes
-        int segundos = 0; // Segundos fixos em 0, pois a entrada é em minutos completos
+        int horas = totalMinutos / 60; 
+        int minutos = totalMinutos % 60; 
+        int segundos = 0; 
 
-        // Retorna o tempo formatado como HH:MM:SS
         return String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
-    // Método para exibir o resultado
     private static void exibirResultado(String resultado) {
         System.out.printf("O tempo convertido é: %s%n", resultado);
     }
 
-    // Método para ler um valor inteiro com validação
     private static int lerValorInteiro(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -60,12 +49,11 @@ public class ConversaoTempo {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
                 exibirMensagemErro("Erro: Entrada inválida. Por favor, digite um número inteiro válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine(); 
             }
         }
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
