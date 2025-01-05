@@ -1,5 +1,3 @@
-package revisao1;
-
 import java.util.Scanner;
 
 public class SomaMatrizes {
@@ -8,23 +6,19 @@ public class SomaMatrizes {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Entrada do tamanho das matrizes
             int linhas = lerValorInteiro(scanner, "Digite o número de linhas das matrizes: ");
             int colunas = lerValorInteiro(scanner, "Digite o número de colunas das matrizes: ");
 
             validarDimensoesMatrizes(linhas, colunas);
 
-            // Inicializando e preenchendo as matrizes
             System.out.println("Digite os valores da primeira matriz:");
             int[][] matriz1 = preencherMatriz(scanner, linhas, colunas);
 
             System.out.println("Digite os valores da segunda matriz:");
             int[][] matriz2 = preencherMatriz(scanner, linhas, colunas);
 
-            // Calculando a soma das matrizes
             int[][] matrizSoma = somarMatrizes(matriz1, matriz2);
 
-            // Exibindo a matriz resultante
             System.out.println("Matriz resultante (soma das duas matrizes):");
             exibirMatriz(matrizSoma);
 
@@ -35,14 +29,12 @@ public class SomaMatrizes {
         }
     }
 
-    // Método para validar as dimensões das matrizes
     private static void validarDimensoesMatrizes(int linhas, int colunas) {
         if (linhas <= 0 || colunas <= 0) {
             throw new IllegalArgumentException("As matrizes devem ter dimensões positivas.");
         }
     }
 
-    // Método para preencher uma matriz
     private static int[][] preencherMatriz(Scanner scanner, int linhas, int colunas) {
         int[][] matriz = new int[linhas][colunas];
         for (int i = 0; i < linhas; i++) {
@@ -53,7 +45,6 @@ public class SomaMatrizes {
         return matriz;
     }
 
-    // Método para somar duas matrizes
     private static int[][] somarMatrizes(int[][] matriz1, int[][] matriz2) {
         int linhas = matriz1.length;
         int colunas = matriz1[0].length;
@@ -67,17 +58,15 @@ public class SomaMatrizes {
         return matrizSoma;
     }
 
-    // Método para exibir uma matriz
     private static void exibirMatriz(int[][] matriz) {
         for (int[] linha : matriz) {
             for (int valor : linha) {
                 System.out.print(valor + " ");
             }
-            System.out.println(); // Quebra de linha após cada linha da matriz
+            System.out.println();
         }
     }
 
-    // Método para ler um valor inteiro com validação
     private static int lerValorInteiro(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -85,14 +74,12 @@ public class SomaMatrizes {
                 return scanner.nextInt();
             } catch (Exception e) {
                 exibirMensagemErro("Erro: Entrada inválida. Digite um número inteiro válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
 }
-
