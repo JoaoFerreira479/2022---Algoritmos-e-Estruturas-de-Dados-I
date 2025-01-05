@@ -1,5 +1,3 @@
-package revisao2;
-
 import java.util.Scanner;
 
 public class MatrizComSomaColunas {
@@ -8,21 +6,16 @@ public class MatrizComSomaColunas {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Dimensões fixas da matriz
             final int LINHAS = 4;
             final int COLUNAS = 4;
 
-            // Inicializando a matriz
             int[][] matriz = new int[LINHAS][COLUNAS];
 
-            // Preenchendo as primeiras 3 linhas da matriz
             System.out.println("Preenchendo a matriz (as 3 primeiras linhas):");
             preencherMatriz(scanner, matriz, LINHAS - 1, COLUNAS);
 
-            // Calculando a soma das colunas e preenchendo a última linha
             calcularSomaColunas(matriz);
 
-            // Exibindo a matriz final
             System.out.println("Matriz final com a soma das colunas na última linha:");
             exibirMatriz(matriz);
 
@@ -33,7 +26,6 @@ public class MatrizComSomaColunas {
         }
     }
 
-    // Método para preencher as primeiras linhas da matriz
     private static void preencherMatriz(Scanner scanner, int[][] matriz, int linhas, int colunas) {
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -42,28 +34,25 @@ public class MatrizComSomaColunas {
         }
     }
 
-    // Método para calcular a soma das colunas e preencher a última linha
     private static void calcularSomaColunas(int[][] matriz) {
         for (int j = 0; j < matriz[0].length; j++) {
             int soma = 0;
             for (int i = 0; i < matriz.length - 1; i++) {
                 soma += matriz[i][j];
             }
-            matriz[matriz.length - 1][j] = soma; // Preenche a última linha com a soma
+            matriz[matriz.length - 1][j] = soma;
         }
     }
 
-    // Método para exibir a matriz
     private static void exibirMatriz(int[][] matriz) {
         for (int[] linha : matriz) {
             for (int valor : linha) {
                 System.out.print(valor + "\t");
             }
-            System.out.println(); // Quebra de linha após cada linha da matriz
+            System.out.println();
         }
     }
 
-    // Método para ler um valor inteiro com validação
     private static int lerValorInteiro(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -71,12 +60,11 @@ public class MatrizComSomaColunas {
                 return scanner.nextInt();
             } catch (Exception e) {
                 exibirMensagemErro("Erro: Entrada inválida. Digite um número inteiro válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
