@@ -1,5 +1,3 @@
-package estruturascondicionais;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,13 +7,10 @@ public class CategoriaNatacao {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Entrada da idade
             int idade = lerIdade(scanner, "Digite a idade da pessoa: ");
 
-            // Determinação da categoria
             String categoria = determinarCategoria(idade);
 
-            // Exibição do resultado
             exibirCategoria(idade, categoria);
 
         } catch (IllegalArgumentException e) {
@@ -27,7 +22,6 @@ public class CategoriaNatacao {
         }
     }
 
-    // Método para determinar a categoria com base na idade
     private static String determinarCategoria(int idade) {
         if (idade < 8) {
             return "INFANTIL";
@@ -42,7 +36,6 @@ public class CategoriaNatacao {
         }
     }
 
-    // Método para ler a idade com validação
     private static int lerIdade(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -54,17 +47,15 @@ public class CategoriaNatacao {
                 return idade;
             } catch (InputMismatchException e) {
                 exibirMensagemErro("Erro: Entrada inválida. Por favor, digite um número inteiro válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para exibir a categoria
     private static void exibirCategoria(int idade, String categoria) {
         System.out.printf("A categoria para a idade %d é: %s%n", idade, categoria);
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
