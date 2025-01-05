@@ -1,5 +1,3 @@
-package usodeflag;
-
 import java.util.Scanner;
 
 public class ConsumoEnergia {
@@ -8,7 +6,6 @@ public class ConsumoEnergia {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Inicialização de variáveis para métricas
             int contadorResidencias = 0;
             int contadorComercio = 0;
             double somaResidencias = 0.0;
@@ -16,15 +13,13 @@ public class ConsumoEnergia {
             double somaTotal = 0.0;
             int totalConsumidores = 0;
 
-            // Mensagem inicial
             exibirMensagem("Digite o tipo de consumidor (1 para Residência, 2 para Comércio).\nDigite 0 para encerrar.");
 
-            // Loop principal para entrada de dados
             while (true) {
                 int tipo = lerValorInteiro(scanner, "Tipo de consumidor: ");
 
                 if (tipo == 0) {
-                    break; // Encerra o loop se o tipo for 0
+                    break;
                 }
 
                 if (!validarTipoConsumidor(tipo)) {
@@ -38,7 +33,6 @@ public class ConsumoEnergia {
                     continue;
                 }
 
-                // Atualização de métricas
                 if (tipo == 1) {
                     contadorResidencias++;
                     somaResidencias += consumo;
@@ -51,7 +45,6 @@ public class ConsumoEnergia {
                 totalConsumidores++;
             }
 
-            // Exibição dos resultados
             exibirResultados(contadorResidencias, somaResidencias, contadorComercio, somaComercio, somaTotal, totalConsumidores);
 
         } catch (Exception e) {
@@ -61,12 +54,10 @@ public class ConsumoEnergia {
         }
     }
 
-    // Método para validar o tipo de consumidor
     private static boolean validarTipoConsumidor(int tipo) {
         return tipo == 1 || tipo == 2;
     }
 
-    // Método para exibir os resultados
     private static void exibirResultados(int contadorResidencias, double somaResidencias, int contadorComercio, double somaComercio, double somaTotal, int totalConsumidores) {
         double mediaResidencias = (contadorResidencias > 0) ? somaResidencias / contadorResidencias : 0;
         double mediaComercio = (contadorComercio > 0) ? somaComercio / contadorComercio : 0;
@@ -80,7 +71,6 @@ public class ConsumoEnergia {
         exibirMensagem(String.format("Média de consumo do Bairro: %.2f kWh", mediaBairro));
     }
 
-    // Método para ler um valor inteiro com validação
     private static int lerValorInteiro(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -88,12 +78,11 @@ public class ConsumoEnergia {
                 return scanner.nextInt();
             } catch (Exception e) {
                 exibirMensagemErro("Entrada inválida. Por favor, digite um número inteiro válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para ler um valor double com validação
     private static double lerValorDouble(Scanner scanner, String mensagem) {
         while (true) {
             try {
@@ -101,17 +90,15 @@ public class ConsumoEnergia {
                 return scanner.nextDouble();
             } catch (Exception e) {
                 exibirMensagemErro("Entrada inválida. Por favor, digite um número decimal válido.");
-                scanner.nextLine(); // Limpa o buffer
+                scanner.nextLine();
             }
         }
     }
 
-    // Método para exibir mensagens gerais
     private static void exibirMensagem(String mensagem) {
         System.out.println(mensagem);
     }
 
-    // Método para exibir mensagens de erro
     private static void exibirMensagemErro(String mensagem) {
         System.err.println(mensagem);
     }
